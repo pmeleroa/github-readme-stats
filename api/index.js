@@ -7,6 +7,7 @@ import {
   parseBoolean,
   renderError,
 } from "../src/common/utils.js";
+import whitelist from "../src/common/whitelist.js";
 import { fetchStats } from "../src/fetchers/stats-fetcher.js";
 import { isLocaleAvailable } from "../src/translations.js";
 
@@ -41,7 +42,9 @@ export default async (req, res) => {
   } = req.query;
   res.setHeader("Content-Type", "image/svg+xml");
 
-  if (blacklist.includes(username)) {
+  if (blacklist.includes(username) ||
+      // Feature - Add whitelist feature to allow only my profile
+      !whitelist.includes(username)) {
     return res.send(
       renderError("Something went wrong", "This username is blacklisted", {
         title_color,
