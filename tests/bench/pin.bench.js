@@ -6,7 +6,7 @@ import { jest } from "@jest/globals";
 
 const data_repo = {
   repository: {
-    username: "anuraghazra",
+    username: "pmeleroa",
     name: "convoychat",
     stargazers: {
       totalCount: 38000,
@@ -36,7 +36,7 @@ benchmarkSuite("test /api/pin", {
   ["simple request"]: async () => {
     const req = {
       query: {
-        username: "anuraghazra",
+        username: "pmeleroa",
         repo: "convoychat",
       },
     };
